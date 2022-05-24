@@ -8,23 +8,23 @@ import { Link, useNavigate } from "react-router-dom";
 import countryList from "react-select-country-list";
 import Select from "react-select";
 
-// let validationSchema = yup.object({
-//   name: yup
-//     .string()
-//     .required("name is required")
-//     .min(6, "name length is not valid"),
-//   email: yup
-//     .string()
-//     .email("invalid email format")
-//     .required("email is required"),
-//   phoneNumber: yup
-//     .string()
-//     .required("phoneNumber is required")
-//     .matches(/^[0-9]{11}$/, "invalid phone number")
-//     .nullable(),
-//   address: yup.string().required("address is required"),
-//   nationality: yup.string().required("nationality is required"),
-// });
+let validationSchema = yup.object({
+  name: yup
+    .string()
+    .required("name is required")
+    .min(6, "name length is not valid"),
+  email: yup
+    .string()
+    .email("invalid email format")
+    .required("email is required"),
+  phoneNumber: yup
+    .string()
+    .required("phoneNumber is required")
+    .matches(/^[0-9]{11}$/, "invalid phone number")
+    .nullable(),
+  address: yup.string().required("address is required"),
+  nationality: yup.string().required("nationality is required"),
+});
 const AddContact = ({ AddContacts, onedit }) => {
   const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
@@ -48,7 +48,7 @@ const AddContact = ({ AddContacts, onedit }) => {
   const formik = useFormik({
     initialValues,
     onSubmit: submitHandler,
-    // validationSchema,
+    validationSchema,
     validateOnMount: true,
   });
 
