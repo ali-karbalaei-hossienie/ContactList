@@ -11,16 +11,16 @@ const App = () => {
     setContacts([...contacts, { id: Date.now(), ...values }]);
   };
 
-  // useEffect(() => {
-  //   let saveContacts = JSON.parse(localStorage.getItem("contacts"));
-  //   if (saveContacts.length) {
-  //     setContacts(saveContacts);
-  //   }
-  // }, []);
+  useEffect(() => {
+    let saveContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (saveContacts && saveContacts.length !== 0) {
+      setContacts(saveContacts);
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("contacts", JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const DeleteHandler = (id) => {
     const DleteContact = contacts.filter((c) => c.id != id);
