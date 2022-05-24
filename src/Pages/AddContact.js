@@ -12,7 +12,7 @@ let validationSchema = yup.object({
   name: yup
     .string()
     .required("name is required")
-    .min(6, "name length is not valid"),
+    .min(3, "The minimum length of the name is 4"),
   email: yup
     .string()
     .email("invalid email format")
@@ -26,10 +26,15 @@ let validationSchema = yup.object({
   nationality: yup.string().required("nationality is required"),
 });
 const AddContact = ({ AddContacts, onedit }) => {
-  const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
 
-  const selectOption = options;
+  const selectOptions = [
+    {
+      label: "select nationality ...",
+      value: "",
+    },
+    ...options,
+  ];
   const initialValues = {
     name: onedit ? onedit.name : "",
     email: onedit ? onedit.email : "",
@@ -100,8 +105,12 @@ const AddContact = ({ AddContacts, onedit }) => {
         </div>
         <div className="formControl">
           <select {...formik.getFieldProps("nationality")}>
-            {options.map((item) => (
-              <option name="nationality" key={item.value} value={item.label}>
+            {selectOptions.map((item) => (
+              <option
+                name="nationality"
+                key={item.value}
+                value={item.value && item.label}
+              >
                 {item.label}
               </option>
             ))}

@@ -157,7 +157,7 @@ textarea::placeholder {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%;
   height: 150px;
   display: flex;
   justify-content: space-between;
@@ -298,6 +298,8 @@ button {
   left: 20%;
 }
 
+/* viewContact */
+
 .showcontact {
   background: white;
   background: linear-gradient(
@@ -313,14 +315,14 @@ button {
   z-index: 2;
   backdrop-filter: blur(20px);
   padding: 20px;
-  margin: 0 auto;
-  margin-top: 150px;
-  max-width: 30rem;
-  height: 35rem;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 35rem;
   backdrop-filter: blur(20px);
+  margin: 0 auto;
+  margin-top: 10vh;
 }
 
 .profile {
@@ -380,7 +382,6 @@ button {
   flex-wrap: wrap;
 }
 
-/* viewContact */
 .circle5 {
   width: 100px;
   height: 100px;
@@ -397,7 +398,7 @@ button {
 }
 
 /* mobile 400px */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   /* Add Contact */
   .form {
     margin-top: 0;
@@ -426,6 +427,9 @@ button {
   }
 
   /* Contacts */
+  .contactUser {
+    width: 20%;
+  }
   .circle3 {
     width: 80px;
     height: 80px;
@@ -444,26 +448,38 @@ button {
   .imgUser {
     margin-right: 1rem;
     margin-left: 1rem;
+    width: 40px;
+    height: 40px;
   }
 
   .name {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
   }
   .phone {
     font-weight: 0;
-    font-size: 14px;
+    font-size: 10px;
     margin-top: 8px;
   }
 
+  .mail {
+    font-weight: 0;
+    font-size: 10px;
+    white-space: pre-line;
+  }
+
   .Delete {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   }
 
   .EditIcon {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .postCard {
+    width: 85vw;
   }
 }
 

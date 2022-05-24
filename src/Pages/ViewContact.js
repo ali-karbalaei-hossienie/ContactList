@@ -9,7 +9,6 @@ const ViewContact = ({ contacts }) => {
   const id = params.id;
 
   const contact = contacts.filter((c) => c.id == id);
-  console.log(contact);
   return (
     <div>
       <img src={blob1} alt="blob1" className="circle5" />
