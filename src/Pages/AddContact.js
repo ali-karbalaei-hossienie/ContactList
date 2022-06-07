@@ -7,12 +7,16 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import countryList from "react-select-country-list";
 import Select from "react-select";
+import Input from "../components/common/Input";
+import SelectComponent from "../components/common/SelectComponent";
+import TextArea from "../components/common/TextArea";
 
 let validationSchema = yup.object({
   name: yup
     .string()
     .required("name is required")
-    .min(3, "The minimum length of the name is 4"),
+    .min(3, "The minimum length of the name is 4")
+    .matches(/^[A-Za-z ]*$/, "Please enter valid name"),
   email: yup
     .string()
     .email("invalid email format")
@@ -30,7 +34,7 @@ const AddContact = ({ AddContacts, onedit }) => {
 
   const selectOptions = [
     {
-      label: "select nationality ...",
+      label: "Select Nationality ...",
       value: "",
     },
     ...options,
@@ -63,75 +67,11 @@ const AddContact = ({ AddContacts, onedit }) => {
       <img src={blob2} alt="blob2" className="circle2" />
       <form className="form" onSubmit={formik.handleSubmit}>
         <img src={usericon} className="usericon" />
-        <div className="formControl">
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.name && formik.touched.name && (
-            <p className="error">{formik.errors.name}</p>
-          )}
-        </div>
-
-        <div className="formControl">
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.email && formik.touched.email && (
-            <p className="error">{formik.errors.email}</p>
-          )}
-        </div>
-        <div className="formControl">
-          <input
-            type="text"
-            placeholder="Phone Number"
-            name="phoneNumber"
-            value={formik.values.phoneNumber}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.phoneNumber && formik.touched.phoneNumber && (
-            <p className="error">{formik.errors.phoneNumber}</p>
-          )}
-        </div>
-        <div className="formControl">
-          <select {...formik.getFieldProps("nationality")}>
-            {selectOptions.map((item) => (
-              <option
-                name="nationality"
-                key={item.value}
-                value={item.value && item.label}
-              >
-                {item.label}
-              </option>
-            ))}
-          </select>
-          {formik.errors.nationality && formik.touched.nationality && (
-            <p className="error">{formik.errors.nationality}</p>
-          )}
-        </div>
-        <div className="formControl">
-          <textarea
-            rows="3"
-            placeholder="Address"
-            name="address"
-            value={formik.values.address}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.address && formik.touched.address && (
-            <p className="error">{formik.errors.address}</p>
-          )}
-        </div>
+        <Input formik={formik} name="name" placeholder="Name" />
+        <Input formik={formik} name="email" placeholder="Email" />
+        <Input formik={formik} name="phoneNumber" placeholder="Phone Number" />
+        <SelectComponent formik={formik} selectOptions={selectOptions} />
+        <TextArea formik={formik} />
         <div className="formControl">
           <button type="submit" className="submit" disabled={!formik.isValid}>
             {onedit ? "Update Contact" : "Add Contact"}

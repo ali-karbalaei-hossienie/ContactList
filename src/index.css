@@ -46,10 +46,17 @@ body {
   width: 100%;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: #c3c5de;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
 input,
 textarea,
 select {
-  outline: none;
   background: white;
   background: linear-gradient(
     to right bottom,
@@ -57,15 +64,14 @@ select {
     rgba(255, 255, 255, 0.06)
   );
   border-radius: 10px;
-  color: #f9f9f9;
+  color: #c3c5de;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
   width: 100%;
-  /* margin-bottom: 20px; */
   font-weight: 400;
   padding: 18px 20px 18px 20px;
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
-  border-left: 2px solid rgba(255, 255, 255, 0.5);
-  border-right: 2px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   background-clip: padding-box;
   z-index: 4;
   backdrop-filter: blur(40px);
@@ -74,11 +80,7 @@ select {
 
 option {
   color: #1e1d2b;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #c3c5de;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
   letter-spacing: 2px;
   font-size: 1.1rem;
@@ -151,10 +153,7 @@ textarea::placeholder {
     rgba(255, 255, 255, 0.06)
   );
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   margin-bottom: 20px;
   width: 90%;
